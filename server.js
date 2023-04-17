@@ -1,6 +1,6 @@
 const express = require("express")
 const mongoose = require("mongoose")
-const routes = require('./controller/paymentController')
+const routes = require('./controller/stockController')
 const cors = require('cors');
 
 const connectionString = "mongodb+srv://rusiru:rusiru123@medixo.is6j3xo.mongodb.net/medixo?retryWrites=true&w=majority"

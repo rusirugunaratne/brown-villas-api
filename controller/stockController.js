@@ -1,22 +1,18 @@
 const express = require('express')
 
-const paymentController = express.Router()
+const stockController = express.Router()
 
-const Model = require('../models/Payment')
+const Model = require('../models/Stock')
 
 //Post Method
-paymentController.post('/payment', async (req, res) => {
+stockController.post('/stock', async (req, res) => {
     const reqBody = req.body
     const data = new Model({
-        dateTime: reqBody.dateTime,
-        amount: reqBody.amount,
-        purpose: reqBody.purpose,
-        paidVia: reqBody.paidVia,
-        payersName: reqBody.payersName,
-        nicOrPassport: reqBody.nicOrPassport,
-        contactNo: reqBody.contactNo,
-        email: reqBody.email,
-        address: reqBody.address
+        itemName: reqBody.itemName,
+        itemCode: reqBody.itemCode,
+        itemUOM: reqBody.itemUOM,
+        itemQuantity: reqBody.itemQuantity,
+        itemType: reqBody.itemType
     })
 
     try {
@@ -28,7 +24,7 @@ paymentController.post('/payment', async (req, res) => {
 })
 
 //Get all Method
-paymentController.get('/payment', async (req, res) => {
+stockController.get('/stock', async (req, res) => {
     try {
         const data = await Model.find();
         res.json(data)
@@ -39,7 +35,7 @@ paymentController.get('/payment', async (req, res) => {
 })
 
 //Get by ID Method
-paymentController.get('/payment/:id', async (req, res) => {
+stockController.get('/stock/:id', async (req, res) => {
     try {
         const data = await Model.findById(req.params.id);
         res.json(data)
@@ -50,7 +46,7 @@ paymentController.get('/payment/:id', async (req, res) => {
 })
 
 //Update by ID Method
-paymentController.patch('/payment/:id', async (req, res) => {
+stockController.patch('/stock/:id', async (req, res) => {
     try {
         const id = req.params.id;
         const updatedData = req.body;
@@ -68,7 +64,7 @@ paymentController.patch('/payment/:id', async (req, res) => {
 })
 
 //Delete by ID Method
-paymentController.delete('/payment/:id', async (req, res) => {
+stockController.delete('/stock/:id', async (req, res) => {
     try {
         const id = req.params.id;
         const data = await Model.findByIdAndDelete(id)
@@ -79,7 +75,7 @@ paymentController.delete('/payment/:id', async (req, res) => {
     }
 })
 
-module.exports = paymentController
+module.exports = stockController
 
 
 // {
