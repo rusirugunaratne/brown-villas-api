@@ -20,6 +20,10 @@ const StockSchema = new mongoose.Schema({
     itemType: {
         type: String,
         required: true
+    },
+    itemStatus: {
+        type: String,
+        required: true
     }
 })
 

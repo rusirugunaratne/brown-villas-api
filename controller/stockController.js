@@ -12,7 +12,8 @@ stockController.post('/stock', async (req, res) => {
         itemCode: reqBody.itemCode,
         itemUOM: reqBody.itemUOM,
         itemQuantity: reqBody.itemQuantity,
-        itemType: reqBody.itemType
+        itemType: reqBody.itemType,
+        itemStatus: reqBody.itemStatus
     })
 
     try {
@@ -46,7 +47,7 @@ stockController.get('/stock/:id', async (req, res) => {
 })
 
 //Update by ID Method
-stockController.patch('/stock/:id', async (req, res) => {
+stockController.put('/stock/:id', async (req, res) => {
     try {
         const id = req.params.id;
         const updatedData = req.body;
